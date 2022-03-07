@@ -7,4 +7,12 @@ API para cadastro de cliente e gerenciamento de dados para a Builders.
 * O empacotamento será um jar com o respectivo nome e contexto cadastro-cliente-api;
 * Para o cadastro de Contato ou Endereco, deve existir, obrigatoriamente, um cliente cadastrado;
 * A aplicação vai rodar em Docker com configuração bridge, JAVA 11, RDS (MYSQL) e EC2 micro;
-* A configuração do ambiente está no docker-compose.yml.   
+* A configuração do ambiente está no docker-compose.yml.  
+
+A inserção de informações estão isoladas, isto é, você pode inserir isoladamente o Cliente, o Contato e o Endereço.
+
+Lembrando que para inserir o Contato ou Endereço, é necessário existir um Cliente.
+
+A alteração também pode ser atualizada isoladamente.
+
+Pelo Swagger, temos três conjuntos de APIs, para: Cliente, Contato e Contato Domínio + Endereço e Endereço Domínio. 
