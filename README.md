@@ -16,3 +16,5 @@ Lembrando que para inserir o Contato ou Endereço, é necessário existir um Cli
 A alteração também pode ser atualizada isoladamente.
 
 Pelo Swagger, temos três conjuntos de APIs, para: Cliente, Contato e Contato Domínio + Endereço e Endereço Domínio. 
+
+Redefinido a configuração JPA para EAGER, assim, a busca do Cliente já retorna o Contato e o Endereço.
