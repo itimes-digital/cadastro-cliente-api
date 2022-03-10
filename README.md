@@ -23,13 +23,15 @@ Alguns conjuntos de dados para testes
 
 * Cliente completo com Contato e Endereço:
 
+Deve-se preencher o CPF ou o CNPJ, um dos dois são obrigatórios.
+```json
 {
   "contato": {
     "contatoEnum": "CONTATO_RESIDENCIAL",
     "email": "elvis@gmail.com",
     "numTelefone": "11969236896"
   },
-  "cpfCnpj": "274.839.880-70",
+  "cpf": "274.839.880-70",
   "endereco": {
     "caixaPostal": "12583 - SP",
     "cidade": "São Paulo",
@@ -41,7 +43,7 @@ Alguns conjuntos de dados para testes
     "pais": "BR"
   },
   "dataNascimento": "1979-10-05",
-  "nickname": "elvis",
+  "nickname": "thepelvis",
   "primeiroNome": "Elvis",
   "segundoNome": "Aaron Presley",
   "tipoPessoa": "F"
@@ -70,9 +72,9 @@ Alguns conjuntos de dados para testes
   "segundoNome": "Bennet",
   "tipoPessoa": "F"
 }
-
+```
 * Somente Endereço de um Cliente existente:
-
+```json
 {
     "idCliente": 1,
     "cidade": "São Paulo",
@@ -83,9 +85,9 @@ Alguns conjuntos de dados para testes
     "numLogradouro": 1933,
     "pais": "BR"
 }
-  
+```
 * Domínios de Contato e Endereço:
-
+```json
 {
   "descDominio": "Tipo de endereço comercial",
   "nomeDominio": "ENDERECO_COMERCIAL"
@@ -105,5 +107,5 @@ Alguns conjuntos de dados para testes
   "descDominio": "Tipo de contato residencial",
   "nomeDominio": "CONTATO_RESIDENCIAL"
 }
-
+```
 
