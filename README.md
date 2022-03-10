@@ -6,7 +6,8 @@ API para cadastro de cliente e gerenciamento de dados para a Builders.
 ![alt text](https://github.com/itimes-digital/cadastro-cliente-api/blob/main/modelo_de_dados.drawio.png)
 
 * O modelo criado, foi pensado para que o Cliente possa ter 1-n cotatos e endereços, sejam eles, comercial e residencial;
-* O banco escolhido foi o MySQL;
+* O banco escolhido foi o MySQL e o processo de inserção é automático com tipo de geração IDENTITY;
+* O CPF ou CNPJ será único, já que está contigurado uma constraint para ele;
 * O empacotamento será um jar com o respectivo nome e contexto cadastro-cliente-api;
 * Para o cadastro de Contato ou Endereco, deve existir, obrigatoriamente, um cliente cadastrado;
 * A aplicação vai rodar em Docker com configuração bridge, JAVA 11, RDS (MYSQL) e EC2 micro;
