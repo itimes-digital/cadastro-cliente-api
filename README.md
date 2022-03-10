@@ -9,7 +9,5 @@ API para cadastro de cliente e gerenciamento de dados para a Builders.
 * A aplicação vai rodar em Docker com configuração bridge, JAVA 11, RDS (MYSQL) e EC2 micro;
 * A configuração do ambiente está no docker-compose.yml;
 * A inserção de informações estão isoladas, isto é, você pode inserir isoladamente o Cliente, o Contato e o Endereço;
-* Lembrando que para inserir o Contato ou Endereço, é necessário existir um Cliente;
-* A alteração do Contato e Endereço, também pode ser realizado isoladamente;
-* Pelo Swagger, temos três conjuntos de APIs, para: Cliente, Contato e Contato Domínio + Endereço e Endereço Domínio;
-* Redefinido a configuração JPA para EAGER, assim, a busca do Cliente já retorna o Contato e o Endereço.
+* Pelo Swagger, temos 4 conjuntos de APIs: Cliente, Contato, Endereço e Domínios (Contato e Endereço);
+* Na implementação do modelo de dados foi redefinido a configuração JPA para EAGER, além de inserção de outros atributos, assim, a busca do Cliente já retorna o Contato e o Endereço, caso exista.
