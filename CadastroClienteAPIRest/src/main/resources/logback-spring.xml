@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<property name="DIR_LOG"
+		value="/u/logs/cadastro-cliente-api" />
+
+	<springProfile name="dev,default">
+		<include
+			resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+		<root level="INFO">
+			<appender-ref ref="CONSOLE" />
+		</root>
+	</springProfile>
+
+	<springProfile name="prod">
+
+		<appender name="FILE-ROLLING"
+			class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${DIR_LOG}/app.log</file>
+			<rollingPolicy
+				class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+				<fileNamePattern>${DIR_LOG}/app.%i.log
+				</fileNamePattern>
+				<minIndex>1</minIndex>
+				<maxIndex>15</maxIndex>
+			</rollingPolicy>
+			<triggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+				<maxFileSize>2MB</maxFileSize>
+			</triggeringPolicy>
+			<encoder>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</encoder>
+			<prudent>false</prudent>
+		</appender>
+
+
+		<logger name="org.springframework" level="INFO" />
+		<logger name="com.builders" level="INFO" />
+		<root level="ERROR">
+			<appender-ref ref="FILE-ROLLING" />
+		</root>
+	</springProfile>
+
+</configuration>
