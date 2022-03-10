@@ -1273,7 +1273,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"contato\": {\n    \"contatoEnum\": \"CONTATO_COMERCIAL\",\n    \"email\": \"atlantic@gmail.com\",\n    \"numTelefone\": \"11969236896\"\n  },\n  \"cnpj\": \"90.676.609/0001-78\",\n  \"endereco\": {\n    \"caixaPostal\": \"12583 - SP\",\n    \"cidade\": \"São Paulo\",\n    \"enderecoEnum\": \"ENDERECO_COMERCIAL\",\n    \"estado\": \"SP\",\n    \"logradouro\": \"Av Estados Unidos\",\n    \"numCep\": \"02101000\",\n    \"numLogradouro\": 1756,\n    \"pais\": \"BR\"\n  },\n  \"dataNascimento\": \"1949-10-05\",\n  \"primeiroNome\": \"Atlantic\",\n  \"segundoNome\": \"Records\",\n  \"tipoPessoa\": \"J\"\n}",
+									"raw": "{\n  \"primeiroNome\": \"Elvis\",\n  \"segundoNome\": \"Aaron Presley\",\n  \"nickname\": \"thepelvis\",\n  \"tipoPessoa\": \"F\",\n  \"cpf\": \"27483988070\",\n  \"dataNascimento\": \"1979-10-03\",\n  \"contato\": [\n    {\n      \"numTelefone\": \"11969236896\",\n      \"email\": \"elvis@gmail.com\",\n      \"contatoEnum\": \"CONTATO_RESIDENCIAL\",\n      \"statusEnum\": \"ATIVO\"\n    }\n  ],\n  \"endereco\": [\n    {\n      \"logradouro\": \"Av Wolfgang Amadeu Mozart\",\n      \"numLogradouro\": 1756,\n      \"numCep\": \"02101000\",\n      \"caixaPostal\": \"12583 - SP\",\n      \"cidade\": \"São Paulo\",\n      \"estado\": \"SP\",\n      \"pais\": \"BR\",\n      \"enderecoEnum\": \"ENDERECO_RESIDENCIAL\",\n      \"statusEnum\": \"ATIVO\"\n    },\n    {\n      \"logradouro\": \"Av Sam Cookie\",\n      \"numLogradouro\": 1933,\n      \"numCep\": \"02101999\",\n      \"cidade\": \"São Paulo\",\n      \"estado\": \"SP\",\n      \"pais\": \"BR\",\n      \"enderecoEnum\": \"ENDERECO_COMERCIAL\",\n      \"statusEnum\": \"ATIVO\"\n    }\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1631,7 +1631,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"_links\": [\n    {\n      \"deprecation\": \"elit labore\",\n      \"href\": \"cupidatat officia sint\",\n      \"hreflang\": \"proident cupidatat\",\n      \"media\": \"nisi aute adipisicing do anim\",\n      \"rel\": \"pariatur veniam aute\",\n      \"templated\": true,\n      \"title\": \"ea in in\",\n      \"type\": \"sint\"\n    },\n    {\n      \"deprecation\": \"Lorem in irure\",\n      \"href\": \"do culpa deserunt ut\",\n      \"hreflang\": \"sit exercitation\",\n      \"media\": \"mollit anim\",\n      \"rel\": \"do sit Duis\",\n      \"templated\": true,\n      \"title\": \"sit laboris in pariatur\",\n      \"type\": \"ipsum\"\n    }\n  ],\n  \"cnpj\": \"sed tempor aliquip\",\n  \"contato\": {\n    \"_links\": [\n      {\n        \"deprecation\": \"ut\",\n        \"href\": \"deserunt amet\",\n        \"hreflang\": \"dolore ipsum minim\",\n        \"media\": \"ea minim sed culpa\",\n        \"rel\": \"nulla incididunt\",\n        \"templated\": true,\n        \"title\": \"ullamco\",\n        \"type\": \"adipisicing in ea ex anim\"\n      },\n      {\n        \"deprecation\": \"ipsum in Lorem dolor sed\",\n        \"href\": \"pariatur aliquip\",\n        \"hreflang\": \"Lorem\",\n        \"media\": \"consequat cillum \",\n        \"rel\": \"min\",\n        \"templated\": false,\n        \"title\": \"anim reprehenderi\",\n        \"type\": \"cillum ullamco Lorem esse\"\n      }\n    ],\n    \"contatoEnum\": \"CONTATO_COMERCIAL\",\n    \"email\": \"labore in occaecat\",\n    \"id\": -14636774,\n    \"idCliente\": -13254329,\n    \"numTelefone\": \"nisi dolor cillum ipsum\",\n    \"statusEnum\": \"INATIVO\"\n  },\n  \"cpf\": \"tempor\",\n  \"dataNascimento\": \"in deserunt reprehenderit et aute\",\n  \"endereco\": {\n    \"_links\": [\n      {\n        \"deprecation\": \"consectetur et\",\n        \"href\": \"esse ullamco deserunt ex cupidatat\",\n        \"hreflang\": \"nulla elit v\",\n        \"media\": \"sit sint proident quis id\",\n        \"rel\": \"cillum tempor officia magna sed\",\n        \"templated\": true,\n        \"title\": \"ullamco anim sint\",\n        \"type\": \"laborum in minim\"\n      },\n      {\n        \"deprecation\": \"dolore in\",\n        \"href\": \"proident aute do enim\",\n        \"hreflang\": \"irure Duis laboris eiusmod\",\n        \"media\": \"ullamco\",\n        \"rel\": \"eiusmod\",\n        \"templated\": true,\n        \"title\": \"officia in incididunt ad\",\n        \"type\": \"do nisi anim\"\n      }\n    ],\n    \"caixaPostal\": \"exercitation id dolore occaecat\",\n    \"cidade\": \"reprehenderit consequat\",\n    \"enderecoEnum\": \"ENDERECO_COMERCIAL\",\n    \"estado\": \"magna\",\n    \"id\": -55060379,\n    \"idCliente\": 26308547,\n    \"logradouro\": \"elit\",\n    \"numCep\": \"nostrud voluptate dolor officia\",\n    \"numLogradouro\": 31895052,\n    \"pais\": \"Ut velit nostrud\",\n    \"statusEnum\": \"INATIVO\"\n  },\n  \"id\": 64967931,\n  \"idade\": 10060679,\n  \"nickname\": \"qui anim\",\n  \"primeiroNome\": \"eiusmod\",\n  \"segundoNome\": \"anim irure enim\",\n  \"tipoPessoa\": \"ut mollit\"\n}",
+									"raw": "{\n  \"id\": 1,\n  \"primeiroNome\": \"Elvis\",\n  \"segundoNome\": \"Aaron Presley\",\n  \"nickname\": \"thepelvis\",\n  \"tipoPessoa\": \"F\",\n  \"cpf\": \"27483988070\",\n  \"dataNascimento\": \"1979-10-03\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2461,7 +2461,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/v1/cliente/todos?page=0&size=10",
+									"raw": "{{baseUrl}}/v1/cliente/todos?page=0&size=3",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2478,7 +2478,7 @@
 										},
 										{
 											"key": "size",
-											"value": "10",
+											"value": "3",
 											"description": "size"
 										}
 									]
