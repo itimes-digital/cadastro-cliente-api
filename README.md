@@ -24,56 +24,52 @@ Segue URL do Swagger da aplicação: http://ec2-3-90-107-210.compute-1.amazonaws
 
 Alguns conjuntos de dados para testes
 
-* Cliente completo com Contato e Endereço:
+* Cliente completo com Contato e Endereço, como exemplo:
 
 Deve-se preencher o CPF ou o CNPJ, um dos dois são obrigatórios.
+
 ```json
 {
-  "contato": {
-    "contatoEnum": "CONTATO_RESIDENCIAL",
-    "email": "elvis@gmail.com",
-    "numTelefone": "11969236896"
-  },
-  "cpf": "274.839.880-70",
-  "endereco": {
-    "caixaPostal": "12583 - SP",
-    "cidade": "São Paulo",
-    "enderecoEnum": "ENDERECO_RESIDENCIAL",
-    "estado": "SP",
-    "logradouro": "Av Wolfgang Amadeu Mozart",
-    "numCep": "02101000",
-    "numLogradouro": 1756,
-    "pais": "BR"
-  },
-  "dataNascimento": "1979-10-05",
-  "nickname": "thepelvis",
   "primeiroNome": "Elvis",
   "segundoNome": "Aaron Presley",
-  "tipoPessoa": "F"
-}
-
-{
-  "contato": {
-    "contatoEnum": "CONTATO_COMERCIAL",
-    "email": "tony@gmail.com",
-    "numTelefone": "11969236896"
-  },
-  "cpf": "270.000.000-00",
-  "endereco": {
-    "caixaPostal": "12583 - SP",
-    "cidade": "São Paulo",
-    "enderecoEnum": "ENDERECO_COMERCIAL",
-    "estado": "SP",
-    "logradouro": "Av Wolfgang Amadeu Mozart",
-    "numCep": "02101000",
-    "numLogradouro": 1756,
-    "pais": "BR"
-  },
-  "dataNascimento": "1979-10-05",
-  "nickname": "tony",
-  "primeiroNome": "Tony",
-  "segundoNome": "Bennet",
-  "tipoPessoa": "F"
+  "nickname": "thepelvis",
+  "tipoPessoa": "F",
+  "cpf": "27483988070",
+  "dataNascimento": "1979-10-03",
+  "contato": [
+    {
+      "numTelefone": "11969236896",
+      "email": "elvis@gmail.com",
+      "contatoEnum": "CONTATO_RESIDENCIAL",
+      "statusEnum": "ATIVO",
+      "id": 1
+    }
+  ],
+  "endereco": [
+    {
+      "logradouro": "Av Wolfgang Amadeu Mozart",
+      "numLogradouro": 1756,
+      "numCep": "02101000",
+      "caixaPostal": "12583 - SP",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "pais": "BR",
+      "enderecoEnum": "ENDERECO_RESIDENCIAL",
+      "statusEnum": "ATIVO",
+      "id": 1
+    },
+    {
+      "logradouro": "Av Sam Cookie",
+      "numLogradouro": 1933,
+      "numCep": "02101999",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "pais": "BR",
+      "enderecoEnum": "ENDERECO_COMERCIAL",
+      "statusEnum": "ATIVO",
+      "id": 2
+    }
+  ]
 }
 ```
 * Somente Endereço de um Cliente existente:
