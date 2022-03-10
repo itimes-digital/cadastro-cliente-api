@@ -88,7 +88,7 @@ public class ClienteServiceTest {
 		clienteContato.setEmail("elvis@gmail.com");
 		clienteContato.setContatoEnum(TipoContatoEnum.CONTATO_RESIDENCIAL);
 		
-		cliente.setContato(clienteContato);
+		cliente.getContato().add(clienteContato);
 		
 		assertEquals(cliente, clienteService.salvarCliente(cliente));
 	}
@@ -115,7 +115,7 @@ public class ClienteServiceTest {
 		clienteEndereco.setPais("BR");
 		clienteEndereco.setEnderecoEnum(TipoEnderecoEnum.ENDERECO_RESIDENCIAL);
 		
-		cliente.setEndereco(clienteEndereco);
+		cliente.getEndereco().add(clienteEndereco);
 
 		assertEquals(cliente, clienteService.salvarCliente(cliente));
 	}

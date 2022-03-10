@@ -2,6 +2,8 @@ package com.builders.cad.cliente.vo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 
@@ -66,9 +68,9 @@ public class ClienteVO extends ResourceSupport implements Serializable{
 		return Integer.valueOf(dateTimeAtual.getYear() - dateTimeDtNascimento.getYear()).shortValue();
 	}
 	
-	private ContatoVO contato;
+	private List<ContatoVO> contato;
 	
-	private EnderecoVO endereco;
+	private List<EnderecoVO> endereco;
 	
 	public String getCpf() {
 		
@@ -103,6 +105,20 @@ public class ClienteVO extends ResourceSupport implements Serializable{
 		this.cnpj = cnpj;
 		this.dataNascimento = dataNascimento;
 		
+	}
+	
+	public List<ContatoVO> getContato(){
+		if(contato == null) {
+			contato = new LinkedList<ContatoVO>();
+		}
+		return contato;
+	}
+	
+	public List<EnderecoVO> getEndereco(){
+		if(endereco == null) {
+			endereco = new LinkedList<EnderecoVO>();
+		}
+		return endereco;
 	}
 
 }

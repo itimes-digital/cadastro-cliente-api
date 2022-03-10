@@ -3,6 +3,8 @@ package com.builders.cad.cliente.service;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
@@ -13,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.builders.cad.cliente.enums.StatusEnum;
+import com.builders.cad.cliente.enums.TipoContatoEnum;
+import com.builders.cad.cliente.enums.TipoEnderecoEnum;
 import com.builders.cad.cliente.exception.ResourceNoContentException;
 import com.builders.cad.cliente.exception.ResourceConflitException;
 import com.builders.cad.cliente.exception.UnSupportedCharacterException;
@@ -83,31 +87,36 @@ public class ClienteServiceImpl implements IClienteService {
 			
 			cliente.setAtivo(StatusEnum.ATIVO.getTipoStatusAtivo().byteValue());
 			
-			ContatoVO contato = clienteVO.getContato();
+			List<ContatoVO> contatos = clienteVO.getContato();
 			
-			if(contato != null) {
+			if(contatos != null && !contatos.isEmpty()) {
 			
-				ClienteContatoModel clienteContato = contatoHandler.convertToClienteContato(contato, StatusEnum.ATIVO);
-				clienteContato.setDataCadastro(localDateTime);
-				clienteContato.setDataAtualizacao(localDateTime);
-				
-				clienteContato.setCliente(cliente);
-				
-				cliente.getClienteContato().add(clienteContato);
-			
+				for (ContatoVO contatoVO : contatos) {
+					
+					ClienteContatoModel clienteContato = contatoHandler.convertToClienteContato(contatoVO, StatusEnum.ATIVO);
+					clienteContato.setDataCadastro(localDateTime);
+					clienteContato.setDataAtualizacao(localDateTime);
+					
+					clienteContato.setCliente(cliente);
+					
+					cliente.getClienteContato().add(clienteContato);
+				}
 			}
 			
-			EnderecoVO endereco = clienteVO.getEndereco();
+			List<EnderecoVO> enderecos = clienteVO.getEndereco();
 			
-			if(endereco != null) {
+			if(enderecos != null && !enderecos.isEmpty()) {
+				
+				for (EnderecoVO enderecoVO : enderecos) {
 			
-				ClienteEnderecoModel clienteEndereco = enderecoHandler.convertToClienteEndereco(endereco, StatusEnum.ATIVO);
-				clienteEndereco.setDataCadastro(localDateTime);
-				clienteEndereco.setDataAtualizacao(localDateTime);
-				
-				clienteEndereco.setCliente(cliente);
-				
-				cliente.getClienteEndereco().add(clienteEndereco);
+					ClienteEnderecoModel clienteEndereco = enderecoHandler.convertToClienteEndereco(enderecoVO, StatusEnum.ATIVO);
+					clienteEndereco.setDataCadastro(localDateTime);
+					clienteEndereco.setDataAtualizacao(localDateTime);
+					
+					clienteEndereco.setCliente(cliente);
+					
+					cliente.getClienteEndereco().add(clienteEndereco);
+				}
 				
 			}
 			
@@ -120,7 +129,7 @@ public class ClienteServiceImpl implements IClienteService {
 			clienteVO.setKey(cliente.getIdCliente());
 
 		} else {
-			throw new ResourceConflitException("Cliente já existente!");
+			throw new ResourceConflitException("Cliente já existe!");
 		}
 
 		return clienteVO;
@@ -185,12 +194,10 @@ public class ClienteServiceImpl implements IClienteService {
 			throw new UnSupportedNumberException("Valor não permitido. Favor passar um número válido.");
 		}
 		
-		ClienteVO clienteVO = new ClienteVO();
-		
 		ClienteModel cliente = clienteRepository.findById(id)
 				.orElseThrow(() -> new ResourceNoContentException("No records found for this ID."));
 		
-		clienteHandler.convertToClienteVO(cliente, clienteVO);
+		ClienteVO clienteVO = this.convertToClienteVO(cliente);
 		
 		log.info("> FIM buscarCliente {}", id);
 		
@@ -211,15 +218,13 @@ public class ClienteServiceImpl implements IClienteService {
 			throw new UnSupportedCharacterException("Dados incompletos para prosseguir com a pesquisa. Espera-se no mínimo 4 caracteres.");
 		}
 		
-		ClienteVO clienteVO = new ClienteVO();
-		
 		ClienteModel cliente = clienteRepository.findByName(nome);
 		
 		if(cliente == null) {
 			throw new ResourceNoContentException("No records found for this ID.");
 		}
 		
-		clienteHandler.convertToClienteVO(cliente, clienteVO);
+		ClienteVO clienteVO = this.convertToClienteVO(cliente);
 		
 		log.info("> FIM buscarClientePorNome {}", nome);
 		
@@ -241,15 +246,13 @@ public class ClienteServiceImpl implements IClienteService {
 		
 		cpfCnpj = cpfCnpj.replaceAll("\\.", "").replaceAll("\\-", "").replaceAll("\\/", "");
 		
-		ClienteVO clienteVO = new ClienteVO();
-		
 		ClienteModel cliente = clienteRepository.findByDocument(cpfCnpj);
 		
 		if(cliente == null) {
 			throw new ResourceNoContentException("No records found for this ID.");
 		}
 		
-		clienteHandler.convertToClienteVO(cliente, clienteVO);	
+		ClienteVO clienteVO = this.convertToClienteVO(cliente);
 		
 		log.info("> FIM buscarClientePorCpfCnpj {}", cpfCnpj);
 		
@@ -295,6 +298,47 @@ public class ClienteServiceImpl implements IClienteService {
 		clienteVO.setPrimeiroNome(cliente.getPrimeiroNome());
 		clienteVO.setSegundoNome(cliente.getSegundoNome());
 		clienteVO.setTipoPessoa(String.valueOf(cliente.getTipoPessoa()));
+		
+		if(cliente.getClienteContato() != null) {
+			
+			Set<ClienteContatoModel> clienteContato = cliente.getClienteContato();
+			
+			ContatoVO contatoVO = null;
+			
+			for (ClienteContatoModel clienteContatoModel : clienteContato) {
+				
+				contatoVO = new ContatoVO();
+				contatoVO.setContatoEnum(TipoContatoEnum.CONTATO_RESIDENCIAL.getStatus(clienteContatoModel.getContatoDominio().getIdClienteContatoDominio().intValue()));
+				contatoVO.setEmail(clienteContatoModel.getEmail());
+				contatoVO.setKey(clienteContatoModel.getIdClienteContato());
+				contatoVO.setNumTelefone(clienteContatoModel.getNumTelefone());
+				contatoVO.setStatusEnum(StatusEnum.ATIVO.getStatus(clienteContatoModel.getAtivo().intValue()));
+				clienteVO.getContato().add(contatoVO);
+			}
+		}
+		
+		if(cliente.getClienteEndereco() != null) {
+			
+			Set<ClienteEnderecoModel> clienteEndereco = cliente.getClienteEndereco();
+			
+			EnderecoVO enderecoVO = null;
+			
+			for (ClienteEnderecoModel clienteEnderecoModel : clienteEndereco) {
+				
+				enderecoVO = new EnderecoVO();
+				enderecoVO.setEnderecoEnum(TipoEnderecoEnum.ENDERECO_RESIDENCIAL.getStatus(clienteEnderecoModel.getEnderecoDominio().getIdClienteEnderecoDominio().intValue()));
+				enderecoVO.setCaixaPostal(clienteEnderecoModel.getCaixaPostal());
+				enderecoVO.setKey(clienteEnderecoModel.getIdClienteEndereco());
+				enderecoVO.setCidade(clienteEnderecoModel.getCidade());
+				enderecoVO.setEstado(clienteEnderecoModel.getEstado());
+				enderecoVO.setLogradouro(clienteEnderecoModel.getLogradouro());
+				enderecoVO.setNumCep(clienteEnderecoModel.getNumCep());
+				enderecoVO.setNumLogradouro(clienteEnderecoModel.getNumLogradouro());
+				enderecoVO.setPais(clienteEnderecoModel.getPais());
+				enderecoVO.setStatusEnum(StatusEnum.ATIVO.getStatus(clienteEnderecoModel.getAtivo().intValue()));
+				clienteVO.getEndereco().add(enderecoVO);
+			}
+		}
 
 		log.info("> FIM convertToClienteVO");
 		
