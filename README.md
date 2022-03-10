@@ -2,6 +2,9 @@
 API para cadastro de cliente e gerenciamento de dados para a Builders.
 
 * O arquivo modelo_de_dados.drawio.png tem o desenho do modelo de dados para este sistema;
+
+![alt text](https://github.com/itimes-digital/cadastro-cliente-api/blob/main/modelo_de_dados.drawio.png)
+
 * O modelo criado, foi pensado para que o Cliente possa ter 1-n cotatos e endereços, sejam eles, comercial e residencial;
 * O banco escolhido foi o MySQL;
 * O empacotamento será um jar com o respectivo nome e contexto cadastro-cliente-api;
