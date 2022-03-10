@@ -138,7 +138,10 @@ public class EnderecoHandler {
 		clienteEndereco.setNumCep(enderecoVO.getNumCep());
 		clienteEndereco.setNumLogradouro(enderecoVO.getNumLogradouro());
 		clienteEndereco.setPais(enderecoVO.getPais());
-		clienteEndereco.setAtivo(statusEnum.getTipoStatusAtivo().byteValue());
+		
+		if(statusEnum != null) {
+			clienteEndereco.setAtivo(statusEnum.getTipoStatusAtivo().byteValue());
+		}
 		
 		log.info("> FIM convertToEndereco");
 

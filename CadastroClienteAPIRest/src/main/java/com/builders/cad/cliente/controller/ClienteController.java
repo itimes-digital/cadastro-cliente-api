@@ -201,7 +201,7 @@ public class ClienteController {
 							@ApiResponse(code = 403, message = "Não autorizado"),
 							@ApiResponse(code = 500, message = "Erro interno no servidor"),
 							@ApiResponse(code = 504, message = "Tempo limite da requisição excedido") })
-	public @ResponseBody ClienteVO atualizarCliente(@Valid @RequestBody ClienteVO clienteVO) throws Exception{
+	public @ResponseBody ClienteVO atualizarCliente(@RequestBody ClienteVO clienteVO) throws Exception{
 
 		log.info("> INICIO atualizarCliente");
 		

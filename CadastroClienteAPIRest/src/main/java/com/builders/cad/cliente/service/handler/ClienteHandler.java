@@ -58,17 +58,25 @@ public class ClienteHandler {
 		ClienteModel cliente = new ClienteModel();
 		cliente.setIdCliente(clienteVO.getKey());
 		
-		if(clienteVO.getTipoPessoa().equals("F")) {
-			cliente.setCpfCnpj(clienteVO.getCpf());	
-		}else {
-			cliente.setCpfCnpj(clienteVO.getCnpj());
+		if(clienteVO.getTipoPessoa() != null) {
+			if(clienteVO.getTipoPessoa().equals("F")) {
+				cliente.setCpfCnpj(clienteVO.getCpf());	
+			}else {
+				cliente.setCpfCnpj(clienteVO.getCnpj());
+			}
+		}
+		
+		if(clienteVO.getDataNascimento() != null) {
+			cliente.setDataNascimento(LocalDate.parse(clienteVO.getDataNascimento()));	
 		}
 
-		cliente.setDataNascimento(LocalDate.parse(clienteVO.getDataNascimento()));
 		cliente.setNickname(clienteVO.getNickname());
 		cliente.setPrimeiroNome(clienteVO.getPrimeiroNome());
 		cliente.setSegundoNome(clienteVO.getSegundoNome());
-		cliente.setTipoPessoa(clienteVO.getTipoPessoa().charAt(0));
+		
+		if(clienteVO.getTipoPessoa() != null) {
+			cliente.setTipoPessoa(clienteVO.getTipoPessoa().charAt(0));	
+		}
 
 		log.info("> FIM convertToCliente");
 		
@@ -112,18 +120,26 @@ public class ClienteHandler {
 
 		cliente.setIdCliente(clienteVO.getKey());
 		
-		if(clienteVO.getTipoPessoa().equals("F")) {
-			cliente.setCpfCnpj(clienteVO.getCpf());	
-		}else {
-			cliente.setCpfCnpj(clienteVO.getCnpj());
+		if(clienteVO.getTipoPessoa() != null) {
+			if(clienteVO.getTipoPessoa().equals("F")) {
+				cliente.setCpfCnpj(clienteVO.getCpf());	
+			}else {
+				cliente.setCpfCnpj(clienteVO.getCnpj());
+			}
 		}
 		
-		cliente.setDataNascimento(LocalDate.parse(clienteVO.getDataNascimento()));
+		if(clienteVO.getDataNascimento() != null) {
+			cliente.setDataNascimento(LocalDate.parse(clienteVO.getDataNascimento()));	
+		}
+		
 		cliente.setNickname(clienteVO.getNickname());
 		cliente.setPrimeiroNome(clienteVO.getPrimeiroNome());
 		cliente.setSegundoNome(clienteVO.getSegundoNome());
-		cliente.setTipoPessoa(clienteVO.getTipoPessoa().charAt(0));
-
+		
+		if(clienteVO.getTipoPessoa() != null) {
+			cliente.setTipoPessoa(clienteVO.getTipoPessoa().charAt(0));	
+		}
+	
 		log.info("> FIM convertToCliente");
 
 	}

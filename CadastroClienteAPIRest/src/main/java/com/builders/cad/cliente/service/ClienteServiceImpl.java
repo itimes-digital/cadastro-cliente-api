@@ -142,7 +142,7 @@ public class ClienteServiceImpl implements IClienteService {
 		
 		cliente.setDataAtualizacao(LocalDateTime.now(timeZone));
 		
-		clienteRepository.save(cliente);
+		clienteRepository.saveAndFlush(cliente);
 		
 		log.info("> FIM atualizarCliente");
 		
